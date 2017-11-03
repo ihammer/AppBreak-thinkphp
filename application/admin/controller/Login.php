@@ -71,4 +71,14 @@ class Login extends Controller
         }
     }
 
+    /**
+     * @name 退出登录
+     * @author wudean
+     */
+    public function loginOut(){
+        session('null',config('admin.session_user_scope'));
+        //跳转
+        $this->redirect('login/index');
+    }
+
 }
