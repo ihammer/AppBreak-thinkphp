@@ -8,9 +8,16 @@
 namespace app\admin\controller;
 
 use app\common\lib\IAuth;
-use think\Controller;
-class Login extends Controller
+class Login extends Base
 {
+    /**
+     * @name 初始化登录
+     */
+    public function _initialize()
+    {
+
+    }
+
     /**
      * @return mixed
      * @name  页面
@@ -18,6 +25,10 @@ class Login extends Controller
      */
     public function index()
     {
+        //判断是否登录
+        if($this->IsLogin()){
+            return $this->redirect('index/index');
+        }
         return $this->fetch();
     }
 
@@ -76,7 +87,7 @@ class Login extends Controller
      * @author wudean
      */
     public function loginOut(){
-        session('null',config('admin.session_user_scope'));
+        session(null,config('admin.session_user_scope'));
         //跳转
         $this->redirect('login/index');
     }

@@ -7,9 +7,7 @@
  */
 namespace app\admin\controller;
 
-use think\Controller;
-
-class Index extends Controller
+class Index extends Base
 {
     /**
      * @return mixed
