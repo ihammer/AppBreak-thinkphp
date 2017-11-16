@@ -6,5 +6,13 @@
  * Time: 21:45
  */
 return [
-    'password_pre_halt'=>'_#sing_ty',
+    'password_pre_halt'=>'_#sing_ty',//加密盐
+    'aeskey'=>'1R0NPqe7ANZk8vVNCxGquOMw3Rqx7jeEENjYYNOVliU=',//aes 密钥 , 服务端和客户端必须保持一致 123456
+    'apptypes'=>[
+        'ios',
+         'android',
+    ],
+    'app_sign_time'=>10,//sign 失效时间
+    'app_sign_cache_time'=>20//sign 缓存失效时间
+
 ];

@@ -20,6 +20,7 @@ return [
 
 ];*/
 use think\Route;
+Route::get('test/fun','api/Test/TestFun');
 Route::get('test','api/test/index');
 Route::put('test/:id', 'api/test/update');// 修改
 Route::delete('test/:id','api/test/delete');

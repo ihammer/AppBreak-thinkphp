@@ -7,18 +7,19 @@
  */
 namespace app\api\controller;
 
-use app\common\lib\exception\ApiException;
-use think\Controller;
 
-Class Test extends Controller{
+Class Test extends Common {
 
     public function index(){
-       $id=1;
+       /*$id=1;
        if($id!=2){
             throw new ApiException('数据错误！！！',404,5);
-       }
+       }*/
+
+       halt('哎呦到这里了吧！');
 
     }
+
 
 
     public function update(){
