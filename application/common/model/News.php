@@ -58,4 +58,62 @@ class News extends Base {
         }
         return $this->where($condition)->count();
     }
+
+    /**
+     * @param int $num
+     * @return false|\PDOStatement|string|\think\Collection
+     * @name 首页头部推荐接口
+     * @author wudean
+     */
+    public function getIndexHeaderNormalNews($num=4){
+        $data = [
+            'status' => 1,
+            'is_head_figure' => 1,
+        ];
+
+        $order = [
+            'id' => 'desc',
+        ];
+        return $this->where($data)
+            ->field($this->_getListField())
+            ->order($order)
+            ->limit($num)
+            ->select();
+    }
+
+    /**
+     * @param int $num
+     * @return false|\PDOStatement|string|\think\Collection
+     * @name 获取推荐数据
+     * @author wudean
+     */
+    public function getPositionNormalNews($num=20){
+        $data = [
+            'status' => 1,
+        ];
+
+        $order = [
+            'is_position' => 'desc',
+            'id' => 'desc',
+        ];
+        return $this->where($data)
+            ->field($this->_getListField())
+            ->order($order)
+            ->limit($num)
+            ->select();
+    }
+
+     public function _getListField(){
+         return [
+             'id',
+             'catid',
+             'image',
+             'title',
+             'read_count',
+             'status',
+             'is_position',
+             'update_time',
+             'create_time'
+         ];
+     }
 }

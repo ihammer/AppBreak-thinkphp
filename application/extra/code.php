@@ -13,4 +13,6 @@ return [
     'status_delete' => -1,//已经删除
     'status_normal' => 1,// 存在
     'status_padding' => 0,//待审核
+    'success'=>1,
+    'error'=>0
 ];
