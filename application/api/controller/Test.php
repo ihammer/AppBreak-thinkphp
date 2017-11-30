@@ -15,7 +15,7 @@ Class Test extends Common {
        if($id!=2){
             throw new ApiException('数据错误！！！',404,5);
        }*/
-
+        $this->TestFun();
        halt('哎呦到这里了吧！');
 
     }

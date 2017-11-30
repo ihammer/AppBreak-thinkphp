@@ -27,19 +27,20 @@ class Common extends Controller{
     /**
      * @name 初始化方法
      * @author wudean
+     * @throws ApiException
      */
-    /*public function _initialize()
+    public function _initialize()
     {
+
         //获取header
         $headers=request()->header();
-
         //基础参数校验
         //验证sign是否为空
         if(empty($headers['sign'])){
               throw new ApiException('Sign不存在！',400);
         }
         //判断客户端
-        if(!in_array($headers['app_type'],config('app.apptypes'))){
+        if(!in_array($headers['app-type'],config('app.apptypes'))){
             throw new ApiException('apptype不合法',400);
         }
         //验证sign是否正常
@@ -48,23 +49,24 @@ class Common extends Controller{
         }
         Cache::set($headers['sign'],1,config('app.app_sign_cache_time'));
         $this->headers=$headers;
-    }*/
+    }
     public function TestFun(){
          $data=[
             'did'=>'123456789',
             'version'=>1,
+            'app_type'=>'android',
              'time'=>time()
          ];
-        $str='7DP0LJmfibjZgpmyxsHEQ67BHLfDAOgHdqnvWtmxls4J86wGDsmyIZYkoPk0HuZs';
-        //echo IAuth::setSign($data);exit;
+        echo IAuth::setSign($data);exit;
         echo Aes::decrypt($str);
     }
 
     /**
-     * @param array $results
      * @return array
      * @name 处理新闻内容
      * @author wudean
+     * @param array $news
+     * @return array
      */
     protected  function getDealNews($news = []) {
         if(empty($news)) {

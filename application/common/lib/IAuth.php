@@ -45,7 +45,7 @@
       * @author wudean
       */
     public static function checkSignPass($header){
-        $sign=Aes::encrypt($header['sign']);
+        $sign=Aes::decrypt($header['sign']);
         if(empty($sign)){
             return false;
         }
@@ -78,4 +78,15 @@
         list($t1,$t2)=explode(' ',microtime());
         return $t2.ceil($t1 * 1000);
     }
+
+     /**
+      * @param string $phone
+      * @return string
+      * @name 设置登录的唯一性的token
+      */
+     public static function setAppLoginToken($phone=""){
+         $token=md5(uniqid(md5(microtime(true)),true));
+         $token=sha1($token.$phone);
+         return $token;
+     }
  }
